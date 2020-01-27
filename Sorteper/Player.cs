@@ -29,14 +29,15 @@ namespace Sorteper
         {
             if (hand.Count == 0)
             {
-                Console.WriteLine(playerName + " has no cards left and is out of the game");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine(playerName + " has no cards left and is out of the game \n");
+                Console.ResetColor();
                 isOut = true;
                 return;
             }
-            Console.WriteLine(playerName + " choose a card between 1 and " + player.hand.Count());
+            Console.WriteLine(playerName + " choose a card between 1 and " + player.hand.Count() + "\n");
             index = UserInput();
             hand.Add(player.hand.ElementAt(index - 1));
-            Console.WriteLine(this.playerName + " took " + player.hand.ElementAt(index - 1));
             player.hand.RemoveAt(index - 1);
         }
 
@@ -62,8 +63,6 @@ namespace Sorteper
             //Checks if current players has 1 card left and if that card is sorte per then current players loses the game
             if (hand.Count == 1 && hand.First().CardValue == 10 && hand.First().CardSuit == Card.Suit.Spades)
             {
-                
-                Console.WriteLine(playerName + " lost the game");
                 lost = true;
                 return;
             }
@@ -82,8 +81,11 @@ namespace Sorteper
                     {
                         if (card.CardColor == hand[i].CardColor)
                         {
-                            Console.WriteLine("Removed " + card.ToString());
-                            Console.WriteLine("Removed " + hand[i].ToString());
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine(playerName + " found a pair! \n");
+                            Console.WriteLine("They matched " + card.ToString());
+                            Console.WriteLine("with " + hand[i].ToString() + "\n");
+                            Console.ResetColor();
                             hand.Remove(hand[i]);
                             hand.Remove(card);
                         }

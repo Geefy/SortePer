@@ -58,6 +58,8 @@ namespace Sorteper
 
                         if (player.lost)
                         {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine(player.playerName + " lost the game");
                             GameOver = true;
                             return;
                         }

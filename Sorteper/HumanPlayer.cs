@@ -17,11 +17,13 @@ namespace Sorteper
         {
             if (hand.Count == 0)
             {
-                Console.WriteLine(playerName + " has no cards left and is out of the game");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine(playerName + " has no cards left and is out of the game \n");
+                Console.ResetColor();
                 isOut = true;
                 return;
             }
-            Console.WriteLine(playerName + " choose a card between 1 and " + player.hand.Count());
+            Console.WriteLine(playerName + " choose a card between 1 and " + player.hand.Count() + "\n");
             index = UserInput();
             hand.Add(player.hand.ElementAt(index - 1));
             player.hand.RemoveAt(index - 1);
